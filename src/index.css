@@ -19,6 +19,20 @@
   background: #555;
 } */
 
+@theme {
+  /* ============================================
+     CUSTOM BREAKPOINTS
+     ============================================ */
+
+  /* Mobile breakpoints */
+  --breakpoint-xs: 475px; /* Extra small devices */
+  --breakpoint-sm: 640px; /* Small devices (default) */
+  --breakpoint-md: 768px; /* Medium devices (default) */
+
+  /* Tablet breakpoints */
+  --breakpoint-lg: 1024px; /* Large devices (default) */
+  --font-family-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
 /* Smooth scrolling */
 html {
   font-size: 62.5%;

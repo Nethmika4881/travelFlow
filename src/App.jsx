@@ -11,6 +11,8 @@ import PagenotFoundError from "./pages/PagenotFoundError";
 import Guiders from "./pages/Guiders";
 import { Toaster } from "react-hot-toast";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Destinations from "./pages/Destinations";
+import DestinationDetails from "./pages/DestinationDetails";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,6 +34,15 @@ const router = createBrowserRouter([
       {
         path: "home",
         element: <Home />,
+      },
+
+      {
+        path: "destinations",
+        element: <Destinations />,
+      },
+      {
+        path: "destinations/destination/:id",
+        element: <DestinationDetails />,
       },
       {
         path: "mytrips",

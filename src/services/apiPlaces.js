@@ -9,8 +9,6 @@ const getPlaces = async function () {
     return;
   }
 
-  toast.success("Occured!");
-
   return places;
 };
 

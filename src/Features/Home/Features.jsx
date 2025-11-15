@@ -1,4 +1,4 @@
-import { User, Compass, Blocks } from "lucide-react";
+import { User, Compass, Blocks, Bookmark } from "lucide-react";
 import FeatureCard from "./FeatureCard";
 import FeaturePrimaryText from "./FeaturePrimaryText";
 
@@ -7,7 +7,7 @@ function Features() {
     <section className="flex items-center justify-center py-10">
       <div className="w-4/5 py-20 text-center">
         <FeaturePrimaryText />
-        <div className="mt-20 grid grid-cols-1 gap-20 md:grid-cols-3">
+        <div className="mt-20 grid grid-cols-1 gap-20 md:grid-cols-2 lg:grid-cols-4">
           <FeatureCard
             topic="Choose Your Interests"
             description="Select from temples, beaches, wildlife, or tea plantations to customize your journey"
@@ -25,6 +25,12 @@ function Features() {
             description="Connect with experienced local guides who know the best spots and stories"
           >
             <User size={60} color="#ff6900" />
+          </FeatureCard>
+          <FeatureCard
+            topic="Manage Trips"
+            description="Manage your ongoing , upcoming and past trips on one place"
+          >
+            <Bookmark size={60} color="#ff6900" />
           </FeatureCard>
         </div>
       </div>

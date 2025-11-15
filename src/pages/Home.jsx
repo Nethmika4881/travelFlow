@@ -5,7 +5,7 @@ import Explore from "../Features/Home/Explore";
 
 function Home() {
   return (
-    <div>
+    <div className="bg-stone-50">
       <Hero />
       <Features />
       <Explore />

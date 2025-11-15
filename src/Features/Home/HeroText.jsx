@@ -1,14 +1,15 @@
 function HeroText() {
   return (
     <>
-      <h1 className="text-4xl leading-tight font-extrabold drop-shadow-lg md:text-6xl">
-        Discover Sri Lanka,
+      <h1 className="font-sans text-5xl leading-tight font-extrabold drop-shadow-lg md:text-8xl">
+        Discover Sri Lanka with,
         <br />
         Travel Flow
       </h1>
 
-      <p className="max-w-2xl text-lg text-gray-200 drop-shadow md:text-2xl">
-        Flow Into Adventure — Explore Sri Lanka with Ease
+      <p className="mb-5 max-w-xl text-xl tracking-wide text-gray-200 drop-shadow md:mb-7 md:max-w-3xl md:text-4xl md:font-semibold lg:mb-10 lg:font-normal">
+        Plan your dream journey and find the perfect <br /> local tour guide —
+        all in one place
       </p>
     </>
   );
