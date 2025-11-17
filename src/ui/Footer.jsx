@@ -14,7 +14,7 @@ function Footer() {
           <h3 className="mb-2 text-3xl font-bold text-stone-800">
             Travel Flow
           </h3>
-          <div className="mx-auto h-1 w-20 rounded-full bg-gradient-to-r from-orange-500 to-orange-600"></div>
+          <div className="mx-auto h-1 w-20 rounded-full bg-linear-to-r from-orange-500 to-orange-600"></div>
         </div>
 
         {/* Divider */}
@@ -32,7 +32,7 @@ function Footer() {
       </div>
 
       {/* Bottom accent line */}
-      <div className="h-1 w-full bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500"></div>
+      <div className="h-1 w-full bg-linear-to-r from-orange-500 via-orange-600 to-orange-500"></div>
     </footer>
   );
 }

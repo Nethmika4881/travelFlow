@@ -2,7 +2,7 @@ import { MapPin } from "lucide-react";
 import SecondaryButton from "./SecondaryButton";
 import PrimaryButton from "./PrimaryButton";
 
-function PlaceCard({ place }) {
+function PlaceCard({ place, handleClickOnViewDetailsButton }) {
   const {
     id,
     name,
@@ -56,7 +56,7 @@ function PlaceCard({ place }) {
         </div>
 
         <div className="flex items-center justify-between gap-5">
-          <SecondaryButton to={`destinations/destination/${id}`}>
+          <SecondaryButton onClick={() => handleClickOnViewDetailsButton(id)}>
             View Details
           </SecondaryButton>
           <PrimaryButton to="mytrips"> Add to Trip</PrimaryButton>

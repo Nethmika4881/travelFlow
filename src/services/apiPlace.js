@@ -1,18 +1,20 @@
 import toast from "react-hot-toast";
 import { supabase } from "../../supabase";
 
-const getPlaces = async function () {
-  const { data: places, error } = await supabase
+const getPlaceById = async function (id) {
+  const { data: place, error } = await supabase
     .from("places")
     .select("*")
-    .order("id", { ascending: true });
+    .eq("id", id) // filter by id
+    .single(); // return only one row
+
   if (error) {
     toast.error("Error Occured!");
     console.error("Error Occured : ", error.message);
-    return;
+    return null;
   }
 
-  return places;
+  return place;
 };
 
-export default getPlaces;
+export default getPlaceById;
