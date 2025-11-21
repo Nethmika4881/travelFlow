@@ -1,50 +1,26 @@
-// src/components/MyComponent.jsx
-// This is already JavaScript (JSX) and ready to use!
+import { supabase } from "../../supabase";
 
-import { supabase } from "./../../supabase"; // Make sure you import your client
+// src/components/MyLiveFunctionTester.jsx
 
-// function Guide() {
-//   const callMyFunction = async () => {
-//     console.log("Calling function...");
-//     const { data, error } = await supabase.functions.invoke("places-api", {
-//       body: { name: "React" }, // This 'name' is sent to the function
-//     });
+function Guide() {
+  const callLiveFunction = async () => {
+    console.log("Calling live function...");
 
-//     if (error) {
-//       console.error("Error from function:", error);
-//     } else {
-//       console.log("Data from function:", data); // Will log: { messimport { supabase } from "../supabase";
+    const { data, error } = await supabase.functions.invoke("places-api", {
+      body: { place_id: "ChIJ73hL2y6I4zoRSXJ3U5GovM4" },
+    });
 
-export default function Guide() {
-  const callMyFunction = async () => {
-    console.log("Calling function...");
-
-    try {
-      const { data, error } = await supabase.functions.invoke("places-api", {
-        body: { name: "React" },
-      });
-      console.log(data, "Data");
-      if (error) {
-        console.error("Error from function:", error);
-        alert(`Error: ${error.message}`);
-      } else {
-        console.log("Data from function:", data);
-        alert(`Success: ${data.message}`);
-      }
-    } catch (err) {
-      console.error("Unexpected error:", err);
-      alert(`Unexpected error: ${err.message}`);
-    }
+    console.log(data, error);
   };
 
   return (
-    <div className="p-4">
-      <button
-        onClick={callMyFunction}
-        className="rounded bg-blue-500 p-2 text-white hover:bg-blue-600"
-      >
-        Call Edge Function
-      </button>
-    </div>
+    <button
+      onClick={callLiveFunction}
+      className="rounded bg-green-500 p-2 text-white"
+    >
+      Call LIVE Function
+    </button>
   );
 }
+
+export default Guide;

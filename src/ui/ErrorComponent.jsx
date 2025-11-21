@@ -1,6 +1,6 @@
 import { AlertTriangle, RotateCw, ArrowLeft } from "lucide-react";
 
-function ErrorComponent() {
+function ErrorComponent({ message = "" }) {
   return (
     <div className="px- flex min-h-screen items-center justify-center bg-stone-50">
       <div className="w-full max-w-md rounded-xl border-2 border-red-200 bg-red-50 p-8 shadow-lg lg:max-w-lg lg:p-15">
@@ -11,7 +11,7 @@ function ErrorComponent() {
         </div>
 
         <h2 className="mb-3 text-center text-2xl font-bold text-gray-800">
-          Oops! Something Went Wrong
+          {message || " Oops! Something Went Wrong"}
         </h2>
 
         <div className="flex flex-col gap-3 sm:flex-row">

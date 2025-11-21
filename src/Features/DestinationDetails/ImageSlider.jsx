@@ -13,7 +13,7 @@ import {
 
 function ImageSlider() {
   const { destinationID } = useParams();
-
+  // console.log(destinationID);
   // Autoplay plugin
   const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
 
@@ -52,9 +52,6 @@ function ImageSlider() {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-
-      {/* Rest of your content */}
-      <p>Destination ID: {destinationID}</p>
     </div>
   );
 }

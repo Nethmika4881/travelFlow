@@ -12,7 +12,11 @@ import Guiders from "./pages/Guiders";
 import { Toaster } from "react-hot-toast";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Destinations from "./pages/Destinations";
-import DestinationDetails from "./pages/DestinationDetails";
+import DestinationDetails, {
+  loaderDestinationData,
+} from "./pages/DestinationDetails";
+import { PlacesListProvider } from "./contexts/PlacesListContext";
+import { SelectedPlaceProvider } from "./contexts/HandleSelectedPlaceContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,8 +46,16 @@ const router = createBrowserRouter([
       },
       {
         path: "destinations/destination/:destinationID",
-        element: <DestinationDetails />,
+
+        element: (
+          <SelectedPlaceProvider>
+            <DestinationDetails />
+          </SelectedPlaceProvider>
+        ),
+
+        loader: loaderDestinationData,
       },
+
       {
         path: "mytrips",
         element: <MyTrips />,
@@ -63,22 +75,26 @@ const router = createBrowserRouter([
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <Toaster
-        position="top-center"
-        gutter={12}
-        containerStyle={{ margin: "8px" }}
-        toastOptions={{
-          success: { duration: 3000 },
-          error: { duration: 5000 },
-          style: {
-            fontSize: "16px",
-            maxWidth: "500px",
-            padding: "16px 24px",
-          },
-        }}
-      />
-      <RouterProvider router={router} />
+      <PlacesListProvider>
+        <SelectedPlaceProvider>
+          <ReactQueryDevtools initialIsOpen={false} />
+          <Toaster
+            position="top-center"
+            gutter={12}
+            containerStyle={{ margin: "8px" }}
+            toastOptions={{
+              success: { duration: 3000 },
+              error: { duration: 5000 },
+              style: {
+                fontSize: "16px",
+                maxWidth: "500px",
+                padding: "16px 24px",
+              },
+            }}
+          />
+          <RouterProvider router={router} />
+        </SelectedPlaceProvider>
+      </PlacesListProvider>
     </QueryClientProvider>
   );
 }

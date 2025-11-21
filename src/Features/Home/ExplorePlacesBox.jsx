@@ -1,16 +1,18 @@
 import { useNavigate } from "react-router-dom";
-import useGetPlaces from "../../hooks/useGetPlaces";
 import ErrorComponent from "../../ui/ErrorComponent";
 import PlaceCard from "../../ui/PlaceCard";
 import Spinner from "../../ui/Spinner";
+import { usePlacesList } from "@/contexts/PlacesListContext";
 
 function ExplorePlacesBox() {
   const navigate = useNavigate();
-  const { places, isLoading, isError } = useGetPlaces();
+  const { places, isLoading, isError } = usePlacesList();
+  console.log(places);
   if (isError) return <ErrorComponent />;
   if (isLoading) return <Spinner />;
   const renderPlaces = places.filter((place) => place.featured === true);
   const handleClickOnViewDetailsButton = function (destinationID) {
+    // handleSelectedID(destinationID);
     navigate(`/destinations/destination/${destinationID}`);
   };
 

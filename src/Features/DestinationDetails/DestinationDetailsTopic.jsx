@@ -1,5 +1,4 @@
 import Underline from "@/ui/Underline";
-import Guide from "@/pages/Guide";
 
 function DestinationDetailsTopic() {
   return (
@@ -8,7 +7,6 @@ function DestinationDetailsTopic() {
         Destination Details
       </h1>
       <Underline />
-      <Guide />
     </div>
   );
 }
