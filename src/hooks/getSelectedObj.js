@@ -7,7 +7,7 @@ export const getSelectedObj = async function (destinationID) {
   // console.log(place, "placeplace");
   if (error) {
     console.error(error);
-    throw new Error("Cabins could not be loaded");
+    throw new Error("Places could not be loaded");
   }
   return place[0];
 };

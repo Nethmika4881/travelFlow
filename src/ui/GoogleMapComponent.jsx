@@ -2,11 +2,6 @@ import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
 import Spinner from "./Spinner";
 import { useMemo } from "react";
 import ErrorComponent from "./ErrorComponent";
-import {
-  getCurrentWeather,
-  getHourlyWeather,
-  getDailyWeather,
-} from "@/hooks/getWeatherDetails";
 
 function GoogleMapComponent({ center, zoom = 15 }) {
   const { isLoaded, loadError } = useJsApiLoader({
@@ -20,9 +15,7 @@ function GoogleMapComponent({ center, zoom = 15 }) {
       lng: center.longitude || center.lng || 0,
     };
   }, [center]);
-  getCurrentWeather({ lat: center.latitude, long: center.longitude });
-  getHourlyWeather({ lat: center.latitude, long: center.longitude });
-  getDailyWeather({ lat: center.latitude, long: center.longitude });
+
   if (loadError) return <ErrorComponent />;
   if (!isLoaded) return <Spinner />;
 

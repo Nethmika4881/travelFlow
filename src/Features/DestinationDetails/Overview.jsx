@@ -13,6 +13,7 @@ function Overview({
   userRatingCount,
   rating,
   nameOfThePlace,
+  internationalPhoneNumber,
 }) {
   console.log({
     description,
@@ -22,6 +23,7 @@ function Overview({
     weekdayDescriptions,
     isOpenNow,
     nameOfThePlace,
+    internationalPhoneNumber,
   });
   return (
     <div className="relative rounded-xl bg-white px-10 py-5 shadow-sm">
@@ -35,6 +37,11 @@ function Overview({
         </div>
         <NavigateToGuidersButton />
       </div>
+      {internationalPhoneNumber && (
+        <OverviewContactDetails
+          internationalPhoneNumber={internationalPhoneNumber}
+        />
+      )}
     </div>
   );
 }
@@ -72,6 +79,29 @@ const OverviewReviews = function ({ userRatingCount, rating }) {
   );
 };
 
+import { Phone } from "lucide-react";
+
+const OverviewContactDetails = function ({ internationalPhoneNumber }) {
+  return (
+    <div className="rounded-2xl border-2 border-stone-200 bg-white px-6 py-5 transition-all hover:border-orange-300 hover:shadow-md">
+      <h2 className="mb-3 text-2xl font-semibold text-stone-800">Need Help?</h2>
+      <div className="flex items-center gap-3">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">
+          <Phone className="text-orange-500" size={15} />
+        </div>
+        <div>
+          <p className="text-sm font-medium text-stone-500">Call Now</p>
+          <a
+            href={`tel:${internationalPhoneNumber}`}
+            className="text-lg font-bold text-stone-900 transition-colors hover:text-orange-600"
+          >
+            {internationalPhoneNumber}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
 const OverviewOpenCloseTag = function ({ isOpenNow }) {
   return (
     <div

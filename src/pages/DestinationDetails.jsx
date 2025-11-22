@@ -9,6 +9,8 @@ import { getSelectedObj } from "@/hooks/getSelectedObj";
 import { useLoaderData, useNavigation } from "react-router-dom";
 import GoogleMapComponent from "@/ui/GoogleMapComponent";
 import Topic from "@/ui/Topic";
+import PopularActivitiesComponent from "@/ui/PopularActivitiesComponent";
+import DisplayWeatherDetails from "@/components/DisplayWeatherDetails";
 export default function DestinationDetails() {
   const { destination, placesApiData, isError } = useLoaderData();
   const navigation = useNavigation();
@@ -29,6 +31,7 @@ export default function DestinationDetails() {
     regularOpeningHours = {},
     reviews = [],
     userRatingCount = null,
+    internationalPhoneNumber,
   } = placesApiData || {};
 
   // Extract nested values
@@ -42,6 +45,7 @@ export default function DestinationDetails() {
     crowd_percentage: crowdLevel = 0,
     best_time_to_visit: bestTime = "Year-round",
     // category = "General",
+    popular_activities: popularActivities,
     description,
     google_place_id,
   } = destination || {};
@@ -50,7 +54,7 @@ export default function DestinationDetails() {
   console.log("Places API Data:", placesApiData);
   console.log({ reviews, rating, userRatingCount });
   return (
-    <div className="min-h-screen w-full gap-10 bg-stone-50 px-6 py-8 md:px-18 lg:grid lg:grid-cols-[3fr_2fr] lg:grid-rows-[auto_1fr] lg:px-10">
+    <div className="min-h-screen w-full gap-10 bg-stone-50 px-6 py-8 md:px-18 lg:grid lg:grid-cols-[3fr_2fr] lg:grid-rows-[auto_auto_1fr] lg:px-10">
       <DestinationDetailsTopic />
       <ImageSlider mainImage={mainImage} gallery={gallery} />
       <Overview
@@ -64,19 +68,24 @@ export default function DestinationDetails() {
         isOpenNow={isOpenNow}
         userRatingCount={userRatingCount}
         rating={rating}
+        internationalPhoneNumber={internationalPhoneNumber}
       />
-      <GoogleReviewsDisplay placeData={placesApiData} />
-      <div className="space-y-15 lg:row-span-2 lg:flex lg:flex-col lg:gap-10">
+
+      <DisplayWeatherDetails location={location} />
+
+      <div className="mt-10 space-y-15 py-10 lg:row-span-2 lg:flex lg:flex-col lg:gap-10">
         <div className="flex flex-col gap-10">
           <Topic text="Main Map" />
           <GoogleMapComponent center={location} zoom={8} />
         </div>
 
-        <div className="flex flex-col gap-10">
+        <div className="mt-10 flex flex-col gap-10 py-10">
           <Topic text="Site Map" />
           <GoogleMapComponent center={location} zoom={15} />
         </div>
+        <PopularActivitiesComponent popularActivities={popularActivities} />
       </div>
+      <GoogleReviewsDisplay placeData={placesApiData} />
     </div>
   );
 }

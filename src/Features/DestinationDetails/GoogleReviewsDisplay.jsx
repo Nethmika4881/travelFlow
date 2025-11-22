@@ -62,7 +62,7 @@ const ReviewCard = ({ review, renderStars }) => {
   return (
     <div
       key={review.name}
-      className="rounded-xl bg-white p-10 shadow-md transition-shadow duration-300 hover:shadow-xl"
+      className="rounded-xl bg-white p-10 shadow-md transition-all duration-300 hover:scale-102 hover:shadow-xl"
     >
       <div className="flex items-start gap-4">
         {/* Avatar */}
@@ -148,7 +148,7 @@ const GoogleReviewsDisplay = ({ placeData }) => {
   const avgRating = rating || calculateAverageRating();
 
   return (
-    <div className="row-span-2 min-h-screen bg-linear-to-br p-4 font-sans md:p-8">
+    <div className="min-h-screen bg-linear-to-br p-4 font-sans md:px-0 md:py-8 lg:row-span-1">
       <div className="mx-auto max-w-6xl">
         {/* Header and Summary (Unchanged) */}
         <div className="mb-6 rounded-2xl bg-white p-6 shadow-lg md:p-8">
@@ -221,7 +221,7 @@ const GoogleReviewsDisplay = ({ placeData }) => {
         </div>
 
         {/* Reviews List */}
-        <div className="space-y-4">
+        <div className="space-y-10">
           {/* RENDER THE EXTRACTED COMPONENT */}
           {filteredReviews.map((review, index) => (
             <ReviewCard
